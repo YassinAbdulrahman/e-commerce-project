@@ -28,6 +28,19 @@ function LoginPage() {
               </Link>
             </label>
           </Col>
+          <label className="mx-auto my-4">
+                    <Link to="/admin/allproducts" style={{textDecoration:'none'}}>
+                        <span style={{ cursor: "pointer" }} className="text-danger mx-3">
+                            الدخول ادمن
+                        </span>
+                    </Link> <br />
+
+                    <Link to="/user/allorders" style={{textDecoration:'none'}}>
+                        <span style={{ cursor: "pointer" }} className="text-danger mx-3">
+                            الدخول مستخدم
+                        </span>
+                    </Link>
+                </label>
         </Row>
       </Container>
   );
