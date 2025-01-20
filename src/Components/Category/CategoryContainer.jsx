@@ -1,33 +1,39 @@
-import React from 'react'
-import { Container, Row } from 'react-bootstrap'
-import clothe from "../../assets/images/clothe.png";
-import cat2 from "../../assets/images/cat2.png";
-import labtop from "../../assets/images/labtop.png";
-import sale from "../../assets/images/sale.png";
-import pic from "../../assets/images/pic.png";
+import React, { useEffect } from 'react'
+import { Container, Row, Spinner } from 'react-bootstrap'
 import CategoryCard from './CategoryCard';
-function CategoryContainer() {
+function CategoryContainer({data , loading}) {
+
+  const colors = [
+    "#FFD3E8",
+    "#F4DBA5",
+    "#55CFDF",
+    "#FF6262",
+    "#0034FF",
+    "#FF03E8",
+  ];
+
   return (
     <Container>
         <div className='admin-content-text'>كل تصنيفات</div>
         <Row className="my-2 d-flex justify-content-between">
-        <CategoryCard title="اجهزه منزلية" img={clothe} background="#F4DBA4"/>
-        <CategoryCard title="اجهزه منزلية" img={cat2} background="#F4DBA4"/>
-        <CategoryCard title="اجهزه منزلية" img={labtop} background="#F4DBA4"/>
-        <CategoryCard title="اجهزه منزلية" img={sale} background="#F4DBA4"/>
-        <CategoryCard title="اجهزه منزلية" img={clothe} background="#F4DBA4"/>  
-        <CategoryCard title="اجهزه منزلية" img={pic} background="#F4DBA4"/>
-        <CategoryCard title="اجهزه منزلية" img={clothe} background="#F4DBA4"/>
-        <CategoryCard title="اجهزه منزلية" img={cat2} background="#F4DBA4"/>
-        <CategoryCard title="اجهزه منزلية" img={labtop} background="#F4DBA4"/>
-        <CategoryCard title="اجهزه منزلية" img={sale} background="#F4DBA4"/>
-        <CategoryCard title="اجهزه منزلية" img={clothe} background="#F4DBA4"/>  
-        <CategoryCard title="اجهزه منزلية" img={pic} background="#F4DBA4"/>
-        <CategoryCard title="اجهزه منزلية" img={cat2} background="#F4DBA4"/>
-        <CategoryCard title="اجهزه منزلية" img={labtop} background="#F4DBA4"/>
-        <CategoryCard title="اجهزه منزلية" img={sale} background="#F4DBA4"/>
-        <CategoryCard title="اجهزه منزلية" img={clothe} background="#F4DBA4"/>  
-        <CategoryCard title="اجهزه منزلية" img={pic} background="#F4DBA4"/>
+        {loading === false ? (
+          data ? (
+            data.map((item,index) => {
+              return (
+                <CategoryCard
+                  key={index}
+                  title={item.name}
+                  img={item.image.slice(9)}
+                  background={colors[Math.floor(Math.random() * 5 + 1)]}
+                />
+              );
+            })
+          ) : (
+            <h4>لا يوجد تصنيفات</h4>
+          )
+        ) : (
+          <Spinner animation="border" />
+        )}
         </Row>
     </Container>
   )

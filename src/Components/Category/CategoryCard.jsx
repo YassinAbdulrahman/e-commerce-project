@@ -14,7 +14,7 @@ function CategoryCard({background , img , title}) {
           className="categoty-card"
           style={{ backgroundColor: `${background}` }}
         ></div>
-          <img alt="zcv" src={img} className="categoty-card-img" />
+          <img alt="zcv"  src={`http://127.0.0.1:8000/${img}`} className="categoty-card-img" />
           <p className="categoty-card-text my-2">{title}</p>
         
       </div>
